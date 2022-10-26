@@ -6,31 +6,84 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TicTacToe</title>
     <link rel="stylesheet" href="style.css">
+    
     <script src="script.js"></script>
 </head>
 <body>
-   
+    
     <div class="game-container">
-
-        <div class="game-field">
+       
+       <div id="gameOverScreen" class="hide game-over">
+        <svg viewbox="0 0 100 20">
+            <defs>
+              <linearGradient id="gradient">
+                <stop color="#000"/>
+              </linearGradient>
+              <pattern id="wave" x="0" y="-0.5" width="100%" height="100%" patternUnits="userSpaceOnUse">
+                <path id="wavePath" d="M-40 9 Q-30 7 -20 9 T0 9 T20 9 T40 9 T60 9 T80 9 T100 9 T120 9 V20 H-40z" mask="url(#mask)" fill="url(#gradient)"> 
+                  <animateTransform
+                      attributeName="transform"
+                      begin="0s"
+                      dur="1.5s"
+                      type="translate"
+                      from="0,0"
+                      to="40,0"
+                      repeatCount="indefinite" />
+                </path>
+              </pattern>
+            </defs>
+            <text text-anchor="middle" x="50" y="15" font-size="17" fill="white" fill-opacity="0.1">GAME OVER</text>
+            <text text-anchor="middle" x="50" y="15" font-size="17" fill="url(#wave)"  fill-opacity="1">GAME OVER</text>
+          </svg>
+       </div>
+       <div id="gameMenu2" class="game-menu-2 hide">
+        <span id="winnerPlace">PLAYER 1 WON</span>
+        <button class="button-85" role="button">New Game</button>
+       
+    </div>
+        <div id="gameField" class="game-field">
             <table>
+                <div class="player-container">
+                    <div id="player1" class=" player-section">
+        
+                        <h2>Player 1 </h2>
+                        <img src="img/circle.png" alt="">
+                    </div> 
+                    <div id="player2" class="inactive player-section">
+        
+                        <h2>Player 2 </h2>
+                        <img src="img/cross.png" alt="">
+                    </div> 
+                </div>
+                
+                <div id="line0" class="horizontal-line" style="top: 226px"></div>
+                <div id="line1" class="horizontal-line" style="top:366px" ></div>
+                <div id="line2" class="horizontal-line" style="top:507px"></div>
+
+                <div id="line3" class="vertikal-line" style="bottom: 250px; left:5px"></div>
+                <div id="line4" class="vertikal-line" style="bottom: 250px; right:148px" ></div>
+                <div id="line5" class="vertikal-line" style="bottom: 250px; left:144px"></div>
+
+                <div id="line6" class="vertikal-line" style="transform: rotate(-45deg) scaleY(0.0); ; top:368px; left:5px;"></div>
+                <div id="line7" class="vertikal-line" style="transform: rotate(45deg) scaleY(0.0); ;top:368px; left:5px;" ></div>
+                
 
                 <tr>
-                    <td><div class="image-field hide"><img src="img/circle.png" alt=""></div><div class="image-field hide"><img src="img/cross.png" alt=""></td>
-                    <td><div class="image-field hide"><img src="img/circle.png" alt=""></div><div class="image-field hide"><img src="img/cross.png" alt=""></td>
-                    <td><div class="image-field hide"><img src="img/circle.png" alt=""></div><div class="image-field hide"><img src="img/cross.png" alt=""></td>
+                    <td onclick="fillShape(0)"><div id="circle_0" class="image-field hide"><img src="img/circle.png" alt=""></div><div id="cross_0" class="image-field hide"><img src="img/cross.png" alt=""></td>
+                    <td onclick="fillShape(1)"><div id="circle_1" class="image-field hide"><img src="img/circle.png" alt=""></div><div id="cross_1" class="image-field hide"><img src="img/cross.png" alt=""></td>
+                    <td onclick="fillShape(2)"><div id="circle_2" class="image-field hide"><img src="img/circle.png" alt=""></div><div id="cross_2" class="image-field hide"><img src="img/cross.png" alt=""></td>
                 </tr>
 
                 <tr>
-                    <td><div class="image-field hide"><img src="img/circle.png" alt=""></div><div class="image-field hide"><img src="img/cross.png" alt=""></td>
-                    <td><div class="image-field hide"><img src="img/circle.png" alt=""></div><div class="image-field hide"><img src="img/cross.png" alt=""></td>
-                    <td><div class="image-field hide"><img src="img/circle.png" alt=""></div><div class="image-field hide"><img src="img/cross.png" alt=""></td>
+                    <td onclick="fillShape(3)"><div id="circle_3" class="image-field hide"><img src="img/circle.png" alt=""></div><div id="cross_3" class="image-field hide"><img src="img/cross.png" alt=""></td>
+                    <td onclick="fillShape(4)"><div id="circle_4" class="image-field hide"><img src="img/circle.png" alt=""></div><div id="cross_4" class="image-field hide"><img src="img/cross.png" alt=""></td>
+                    <td onclick="fillShape(5)"><div id="circle_5" class="image-field hide"><img src="img/circle.png" alt=""></div><div id="cross_5" class="image-field hide"><img src="img/cross.png" alt=""></td>
                 </tr>
                 
                 <tr>
-                    <td><div class="image-field hide"><img src="img/circle.png" alt=""></div><div class="image-field hide"><img src="img/cross.png" alt=""></td>
-                    <td><div class="image-field hide"><img src="img/circle.png" alt=""></div><div class="image-field hide"><img src="img/cross.png" alt=""></td>
-                    <td><div class="image-field hide"><img src="img/circle.png" alt=""></div><div class="image-field hide"><img src="img/cross.png" alt=""></td>
+                    <td onclick="fillShape(6)"><div id="circle_6" class="image-field hide"><img src="img/circle.png" alt=""></div><div id="cross_6" class="image-field hide"><img src="img/cross.png" alt=""></td>
+                    <td onclick="fillShape(7)"><div id="circle_7" class="image-field hide"><img src="img/circle.png" alt=""></div><div id="cross_7" class="image-field hide"><img src="img/cross.png" alt=""></td>
+                    <td onclick="fillShape(8)"><div id="circle_8" class="image-field hide"><img src="img/circle.png" alt=""></div><div id="cross_8" class="image-field hide"><img src="img/cross.png" alt=""></td>
                 </tr>
                 
             </table>
