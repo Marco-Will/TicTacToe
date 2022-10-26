@@ -9,10 +9,12 @@
     
     <script src="script.js"></script>
 </head>
-<body>
+<body id="body">
     
-    <div class="game-container">
-       
+    <div id="gameContainer" class="game-container" style="
+    background: linear-gradient(-45deg, #ee7752, #5a1932, #166683, #23d5ab);background-size: 400% 400%;
+    animation: gradient 15s ease infinite;">
+       <!--  #ee7752, #5a1932, #166683, #23d5ab -->
        <div id="gameOverScreen" class="hide game-over">
         <svg viewbox="0 0 100 20">
             <defs>
@@ -38,7 +40,7 @@
        </div>
        <div id="gameMenu2" class="game-menu-2 hide">
         <span id="winnerPlace">PLAYER 1 WON</span>
-        <button class="button-85" role="button">New Game</button>
+        <button onclick="restart()" class="button-85" role="button">New Game</button>
        
     </div>
         <div id="gameField" class="game-field">
@@ -89,8 +91,17 @@
             </table>
 
             <div class="game-menu">
-                <button class="button-85" role="button">Themes</button>
-                <button class="button-85" role="button">New Game</button>
+                <div class="dropdown">
+                    <button  class="button-85" role="button">Themes</button>
+                    <div class="dropdown-content">
+                    
+                    <div onclick=" changeThemeDark()" class="desc"><a >DARK-White</a></div>
+                    <div onclick=" changeThemeYellowOrange()" class="desc"><a >YELLOW-Orange</a></div>
+                    <div onclick="changeThemeBlueRed()"class="desc"><a >BLUE-RED</a></div>
+                    </div>
+                  </div>
+                
+                <button onclick="restart()" class="button-85" role="button">New Game</button>
                 <button class="button-85" role="button">Test</button>
             </div>
         </div>
